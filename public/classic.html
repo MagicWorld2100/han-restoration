@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#142d30">
+  <meta name="description" content="穿越成诸葛亮，能否让统一事业跨过粮食、利益和个人寿命？一个可以离线玩的历史策略沙盘。">
+  <title>再出隆中 · 经典文字版</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' rx='8' fill='%23142d30'/%3E%3Ctext x='9' y='43' font-size='39' fill='%23d3b27a'%3E汉%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#" aria-label="再出隆中首页"><span class="seal" aria-hidden="true">汉</span><span>再出隆中<small>历史策略沙盘</small></span></a>
+    <nav aria-label="辅助操作"><button id="rules-button" class="text-button">沙盘规则</button><button id="share-button" class="text-button">分享战报 <span aria-hidden="true">↗</span></button></nav>
+  </header>
+  <main>
+    <section class="theatre" aria-labelledby="game-title">
+      <div class="map-heading"><span id="map-status">公元 207 年 · 天下未定</span><span class="legend"><i></i>己方控制 <b></b>其他势力</span></div>
+      <div class="map-frame">
+        <svg id="map" viewBox="0 0 880 480" role="img" aria-label="荆州、益州、汉中、陇右、关中、中原和江东七个战略区域示意图">
+          <defs>
+            <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#99b2ac" stroke-width=".5" opacity=".12"/></pattern>
+            <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V8" stroke="#91aaa3" stroke-width=".5" opacity=".15"/></pattern>
+            <linearGradient id="mapshade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#41605b" stop-opacity=".2"/><stop offset="1" stop-color="#1a3537" stop-opacity=".7"/></linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+          </defs>
+          <rect width="880" height="480" fill="url(#grid)"/>
+          <g class="contours" fill="none" stroke="#72918a" stroke-width=".7" opacity=".24">
+            <path d="M90 310Q100 190 185 70Q220 20 308 46T460 80Q565 30 709 63T804 151Q760 212 815 285T761 413Q690 459 603 421T435 443Q321 470 198 432T90 310Z"/>
+            <path d="M109 304Q125 190 203 87Q237 42 313 66T456 98Q564 50 694 81T782 152Q738 217 794 288T747 393Q681 439 601 404T437 425Q330 447 210 414T109 304Z"/>
+            <path d="M128 299Q146 192 220 103Q249 66 323 85T452 115Q566 68 687 100T760 153Q724 220 772 290T732 376Q675 419 600 389T439 407Q334 429 223 396T128 299Z"/>
+            <path d="M147 295Q164 194 234 121Q259 88 332 104T449 134Q567 86 678 119T738 155Q711 223 750 292T719 359Q668 399 600 372T441 389Q340 411 236 377T147 295Z"/>
+          </g>
+          <g fill="url(#mapshade)" stroke="#749087" stroke-opacity=".22" stroke-width="1.2">
+            <path data-area="long" d="M164 112L240 65 325 98 337 163 286 211 199 215 144 169Z"/>
+            <path data-area="guan" d="M337 119L443 112 491 163 455 240 361 246 287 210 337 163Z"/>
+            <path data-area="north" d="M443 112L522 68 642 76 732 125 743 201 695 247 591 249 491 218 491 163Z"/>
+            <path data-area="han" d="M199 215L287 210 361 246 353 292 285 308 213 279 169 258Z"/>
+            <path data-area="yi" d="M169 258L213 279 285 308 353 292 371 365 318 415 221 416 142 354Z"/>
+            <path data-area="jing" d="M361 246L455 240 491 218 591 249 583 328 531 387 442 398 371 365 353 292Z"/>
+            <path data-area="wu" d="M591 249L695 247 743 201 789 281 775 365 689 410 593 426 531 387 583 328Z"/>
+          </g>
+          <g class="mountains" fill="none" stroke="#728d80" stroke-width="1" opacity=".45">
+            <path d="M178 235l13-22 14 22m-3-8 12-19 13 19m85 3 12-20 14 20m-7 2 11-20 12 20m4 12 13-23 13 23m-193 92 13-21 12 21m-5 13 10-18 11 18m26-192 10-17 11 17m6-10 13-19 12 19"/>
+          </g>
+          <path class="river" d="M154 307Q171 327 197 327T236 351Q267 376 290 343T347 333Q375 357 403 324T467 337Q514 365 552 334T611 332Q646 357 675 329T739 314L794 325"/>
+          <path class="river minor" d="M214 109Q200 168 241 186T315 160Q355 122 391 131T442 173Q465 190 518 172T595 192L653 203"/>
+          <g class="map-notations"><text x="360" y="225">秦 岭</text><text x="603" y="367">长 江</text><text x="486" y="125">黄 河</text><text x="101" y="386">蜀 道</text></g>
+          <g id="routes" fill="none" stroke="#c7a468" stroke-width="1.6" stroke-dasharray="4 7" opacity=".45"><path d="M235 365L290 252 240 143 392 188 572 151"/><path d="M485 305L572 151M485 305L699 339M235 365L485 305"/></g>
+          <g id="map-nodes"></g>
+          <g transform="translate(814 51)" class="compass"><path d="M0 30V-10M-8 7L0-10 8 7" fill="none" stroke="currentColor"/><text x="0" y="-20" text-anchor="middle">北</text></g>
+          <text x="35" y="454" class="map-note">战略关系示意 · 非历史疆界</text>
+        </svg>
+        <div class="map-title"><p>你有前世的记忆</p><h1 id="game-title">没有凭空的<br>百万雄兵。</h1><span>一场有代价的统一</span></div>
+      </div>
+      <div class="campaign-strip"><div><span id="year-label">公元</span><strong id="year">207</strong><span id="identity">诸葛亮 · 26 岁</span></div><div class="land-progress"><span id="land-count">1 / 7 地</span><div id="land-dots" aria-hidden="true"></div></div></div>
+    </section>
+    <section class="desk" aria-label="军议与国力">
+      <aside class="ledger">
+        <div class="section-heading"><h2>军国簿</h2><button id="details-button" class="text-button">展开详情 <span aria-hidden="true">＋</span></button></div>
+        <div id="stats" class="stats"></div>
+        <div class="balance"><span>下期粮秣估算</span><strong id="balance-value"></strong><small id="balance-detail"></small></div>
+        <div id="details" hidden><div id="extra-stats"></div><div class="stability-list" id="stability-list"></div><p class="help-copy">所有数值均为沙盘指数，非历史统计。粮秣上限 240，其余指标上限 100。</p></div>
+        <div class="objective"><span class="eyebrow">统一，不止于地图同色</span><ul id="objectives"></ul><p id="consolidation"></p></div>
+        <button class="text-button journal-toggle" id="journal-button">翻阅军议记录 <span id="journal-count">0</span> <span aria-hidden="true">↗</span></button>
+      </aside>
+      <section class="council" id="council" aria-labelledby="decision-title">
+        <div class="section-heading"><span class="eyebrow" id="chapter-label">隆中 · 初见</span><span id="turn-label">第 1 次军议</span></div>
+        <h2 id="decision-title"></h2><p id="decision-text"></p>
+        <div id="council-quote" class="council-quote"></div>
+        <div id="filters" class="filters" aria-label="议案分类" hidden><button data-filter="内治" aria-pressed="true">内治</button><button data-filter="外交" aria-pressed="false">外交</button><button data-filter="战役" aria-pressed="false">战役</button></div>
+        <div id="choices" class="choices"></div>
+        <div id="selection" class="selection" hidden aria-live="polite"><p id="selection-detail"></p><button id="confirm-button" class="primary">采纳此议 <span aria-hidden="true">→</span></button></div>
+        <div id="result" class="result" hidden aria-live="polite"></div>
+        <div id="end-actions" hidden><button id="end-share" class="primary">复制我的战报 ↗</button><button id="restart-button" class="secondary">重回 207 年</button></div>
+        <div class="save-note"><span id="save-note">进度保存在此浏览器</span><button id="restart-small" class="text-button">重新开局</button></div>
+      </section>
+    </section>
+  </main>
+  <footer><span>再出隆中 · 朋友圈共创实验</span><span>史事为起点，规则为推演；不预设你会赢。</span><button id="sources-button" class="text-button">史料与模型边界 ↗</button></footer>
+  <dialog id="modal"><div class="modal-top"><h2 id="modal-title"></h2><button id="modal-close" aria-label="关闭弹窗">×</button></div><div id="modal-body"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <noscript><p>请使用支持 JavaScript 的浏览器打开游戏。</p></noscript>
+  <script src="engine.js"></script><script src="app.js"></script>
+</body>
+</html>

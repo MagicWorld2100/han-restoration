@@ -1,0 +1,51 @@
+{
+  "product": "再出隆中 · 山河三维",
+  "version": "2.1.1",
+  "candidate": "1f9fd1382555c3bb",
+  "assets": {
+    "public/index.html": {
+      "bytes": 6968,
+      "sha256": "57c2c0eb14338a3546df17c1460938a47829a1c53a8594a87979f6fed8b998b6"
+    },
+    "public/3d/world.css": {
+      "bytes": 23822,
+      "sha256": "1fbdb80d9ecbb69d5f5a46a7353dc46bf6d6714d586a67710aa29a98deddfb6e"
+    },
+    "public/3d/world.bundle.js": {
+      "bytes": 722618,
+      "sha256": "1f9fd1382555c3bb8d82a6792e4df8370adee18ac33b3e25769393a7f60d7bc9"
+    },
+    "public/3d/THREE-LICENSE.txt": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    "public/engine.js": {
+      "bytes": 22014,
+      "sha256": "19de08bd76834ddd1d642d596cf04235438e294edfbdebf5b4cfbd600bcf4645"
+    },
+    "public/classic.html": {
+      "bytes": 8691,
+      "sha256": "b558940d7dc4c613d94784438208fe41383ed264e54df750c8b1d0c0e88bc300"
+    },
+    "public/app.js": {
+      "bytes": 16844,
+      "sha256": "d8317f762a5b70e27b4fcb2aa16a9b8ea5e34a6a804a2e90ac0c872e103fc5ed"
+    },
+    "public/style.css": {
+      "bytes": 14678,
+      "sha256": "d87a0c912f0d49a04dea0557b3b5d483d57f68e0a20a2ca41415acc35eb2d859"
+    },
+    "public/audio/config.json": {
+      "bytes": 221,
+      "sha256": "2c4840efcf1c8b1b61537bff40190e804ad89c709b39ece98290f59d8ab8295e"
+    },
+    "再出隆中-三维版.html": {
+      "bytes": 754691,
+      "sha256": "307cd205f2ae66306402ec47f5d10473ea67f565b5232d9c3f279eebd01ac5f3"
+    },
+    "再出隆中.html": {
+      "bytes": 62173,
+      "sha256": "643ff9de87cca013d4e3046533c850b2be486e49532812fa16dbd1d4d7d63755"
+    }
+  }
+}

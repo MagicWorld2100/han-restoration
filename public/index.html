@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#162e2c"><meta name="description" content="旋转山河，点选城池，沿粮道出征。穿越成为诸葛亮，在三维战略沙盘中完成你的统一远略。">
+  <title>再出隆中 · 三维战略沙盘</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' rx='8' fill='%23162e2c'/%3E%3Ctext x='10' y='43' font-size='38' fill='%23dfc38c'%3E汉%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="3d/world.css">
+</head>
+<body class="is-landing">
+  <div id="world-stage"><canvas id="world-canvas" aria-label="三维山河沙盘：拖动旋转、滚轮缩放、点击城池选择" tabindex="0"></canvas><div id="city-labels"></div><div class="world-vignette"></div></div>
+  <div id="loading" role="status"><div class="loading-seal">汉</div><h1>再出隆中</h1><p id="loading-copy">正在铺展山河</p><div class="loading-line"><i></i></div></div>
+  <header class="topbar">
+    <button class="brand" id="cover-button" aria-label="返回游戏封面"><span class="brand-seal">汉</span><span>再出隆中<small>山河三维 · 战略沙盘</small></span></button>
+    <div id="resource-bar" class="resource-bar" hidden></div>
+    <div class="header-tools"><button id="audio-button" title="开启音乐与音效" aria-label="开启音乐与音效" aria-pressed="false">音关</button><button id="help-button" title="玩法与规则">玩法</button><button id="menu-button" title="战报与设置">☰</button></div>
+  </header>
+  <section id="cover" class="cover" aria-labelledby="cover-title">
+    <p class="eyebrow">一场有代价的统一</p><h1 id="cover-title">山河待定。<br>此身再出。</h1>
+    <p class="cover-description">走出隆中，亲历山川与粮道。<br>把有限的兵、粮与人心，带向一个未定的天下。</p>
+    <div class="cover-actions"><button id="start-campaign" class="primary">开启隆中远略 <span>207 年 →</span></button><button id="start-tutorial" class="cover-secondary">先试一场北伐 <span>约 2 分钟 · 教学 →</span></button><button id="resume-button" class="resume" hidden>继续上次远略 →</button><button id="import-classic" class="resume" hidden>接续文字版进度 →</button></div>
+    <p class="cover-footnote">拖动即可环视 · 点击右上角「音关」开启主题曲</p>
+  </section>
+  <div class="cover-caption"><span>秦岭以南 · 山川形胜</span><small>立体地形为战略示意</small></div>
+  <div id="game-hud" hidden>
+    <section class="campaign-status"><div class="year"><span id="era-label">公元</span><strong id="game-year">228</strong><span id="mode-label">北伐教学</span></div><h1 id="chapter-title">兵出汉中</h1><p id="chapter-goal">点选汉中，再选择北面的陇右。</p><button id="mission-button" class="subtle">查看远略目标 <span id="territory-count">3 / 7</span> ↗</button><div id="condition-alert" class="condition-alert" hidden></div></section>
+    <div class="map-controls" aria-label="视角与地图控制"><button id="home-view" title="回到全图" aria-label="回到全图">⌖</button><button id="zoom-in" title="拉近镜头" aria-label="拉近镜头">＋</button><button id="zoom-out" title="拉远镜头" aria-label="拉远镜头">−</button><span></span><button id="map-mode" title="切换疆域边界" aria-pressed="false">疆</button><button id="photo-button" title="拍摄山河" aria-label="拍摄山河">▣</button></div>
+    <section id="inspector" class="inspector" hidden aria-labelledby="inspector-title"><div class="panel-top"><span id="inspector-faction" class="eyebrow">汉境</span><button id="close-inspector" aria-label="关闭城池面板">×</button></div><h2 id="inspector-title"></h2><p id="inspector-subtitle"></p><div id="inspector-body"></div></section>
+    <section id="march-hud" class="march-hud" hidden aria-live="polite"><div><span class="live-dot"></span><span id="march-label">军队行进中</span><strong id="march-percent">0%</strong></div><div class="march-track"><i id="march-progress"></i></div><p id="march-stage">先锋出营，辎重随行</p></section>
+    <nav class="command-bar" aria-label="军政指令"><button data-command="council"><span class="command-symbol">策</span><span>军议<small>当下之策</small></span></button><button data-command="domestic"><span class="command-symbol">田</span><span>内治<small>粮册与乡里</small></span></button><button data-command="military"><span class="command-symbol">戎</span><span>军备<small>训练与转运</small></span></button><button data-command="diplomacy"><span class="command-symbol">盟</span><span>外交<small>共同的利益</small></span></button><div class="command-divider"></div><button id="journal-button"><span class="command-symbol">录</span><span>战报<small id="journal-count">尚无决策</small></span></button></nav>
+    <div class="map-foot"><span id="save-state">进度自动保存</span><span>拖动旋转 · 右键平移 · 滚轮缩放</span><span id="weather-label">天候：平年</span></div>
+  </div>
+  <section id="cinematic" hidden aria-label="战役演出"><div class="cinematic-top"><span id="cinematic-route"></span><button id="skip-cinematic">跳过演出 <span>Esc →</span></button></div><div class="cinematic-caption"><span class="eyebrow">战役演出 · 不额外消耗兵粮</span><h2 id="cinematic-title">旌旗出关</h2><p id="cinematic-description">骑队先行，步卒与辎重随后</p><div class="cinematic-timeline"><i id="cinematic-progress"></i></div><small id="cinematic-percent">0%</small></div></section>
+  <section id="report-panel" class="report-panel" hidden aria-live="polite"><div class="panel-top"><span class="eyebrow" id="report-kicker">军议回报</span><button id="report-close" aria-label="关闭回报">×</button></div><h2 id="report-title"></h2><p id="report-summary"></p><div id="report-deltas"></div><details><summary>展开完整军情</summary><div id="report-details"></div></details><button id="report-next" class="primary">继续经略 →</button></section>
+  <dialog id="dialog"><div class="dialog-head"><div><span class="eyebrow" id="dialog-kicker">丞相府 · 军议</span><h2 id="dialog-title"></h2></div><button id="dialog-close" aria-label="关闭">×</button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status"></div>
+  <section id="error-screen" hidden><h1>山河暂未展开</h1><p id="error-message"></p><button id="reload-game" class="primary">重新加载</button><a href="classic.html">进入经典文字版</a></section>
+  <noscript>三维沙盘需要启用 JavaScript。你也可以打开经典文字版。</noscript>
+  <script src="3d/world.bundle.js" defer></script>
+</body>
+</html>
