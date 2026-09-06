@@ -21,7 +21,7 @@
 
 ## 公开分发与隐私
 
-Human 已确认主题曲没有公开再分发权。`MUSIC_REDISTRIBUTION=NOT_AUTHORIZED_ASSET_EXCLUDED`：仓库仅保留 `public/audio/music/theme.mp3` 文件名和加载接口，未导入 MP3，也未导入含它的 Base64。原素材留在原始本地产品；本次没有换音乐或修改游戏源码。
+当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。`MUSIC_REDISTRIBUTION=NOT_VERIFIED_OR_AUTHORIZED_FOR_THIS_IMPORT_ASSET_EXCLUDED`：仓库仅保留 `public/audio/music/theme.mp3` 文件名和加载接口，未导入 MP3，也未导入含它的 Base64。原素材留在原始本地产品；本次没有换音乐或修改游戏源码。
 
 保留源码、锁文件、原有测试、历史说明、两个离线交付文件、构建清单和 Three.js MIT 许可。Human 的 Apache-2.0 `LICENSE` 保持原样；它不授权被排除的音乐。
 
@@ -45,6 +45,8 @@ Human 已确认主题曲没有公开再分发权。`MUSIC_REDISTRIBUTION=NOT_AUT
 | Gitleaks 8.30.1 | PASS；对排除本机配置后的公开候选文件扫描，使用 redaction，不添加忽略基线或规则豁免 |
 
 当前环境限制依赖安装脚本，未为此放宽策略；实际构建仍成功。依赖审计和 secret scan 不是无漏洞或无隐私风险的绝对保证。
+
+PR Review 补充了 `.github/workflows/ci.yml`：在 `pull_request` 和 main 的 `push` 上运行稳定命名的 `quality-gate` job，使用官方 checkout/setup-node、Node 22 和 npm 缓存，依次执行 `npm ci`、`npm run build:cloudflare`、`npm test`、`npm run check:distribution`。工作流只有读取仓库的权限，不需要项目 secrets，不部署或访问生产环境。是否将该 job 设为 required status check，由 Human 后续决定；本次不修改 Ruleset。
 
 ## 可复现性
 

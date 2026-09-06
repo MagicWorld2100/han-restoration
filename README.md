@@ -2,7 +2,7 @@
 
 一个适合朋友圈接力的中文三维战略沙盘。旋转山河、点选城池、规划粮道与行军，再经营你夺取的地方。正式远略从 207 年成为诸葛亮起步，生产、运输、联盟和制度约束仍然生效。
 
-交付版本 **2.1.1**，保留经典二维版与三维版，包含音乐接口、合成音效、战役演出，以及 CSP 和防嵌入加固。本仓库导入已经运行的产品源码；**不分发无公开再分发权的主题曲，也不公开实际部署地址**。导入范围与构建差异见 [Source Import 验收](docs/source-import.md)。历史记录保留在 [声音与战役演出验收](docs/audio-cinematic-verification.md)、[v2.0 用户路线验收](docs/dogfood-delivery.md) 和 [安全加固验收](docs/security-hardening-verification.md)。当前公开构建可用 [构建指纹](release-manifest.json) 核对。
+交付版本 **2.1.1**，保留经典二维版与三维版，包含音乐接口、合成音效、战役演出，以及 CSP 和防嵌入加固。本仓库导入已经运行的产品源码，不公开实际部署地址。当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。导入范围与构建差异见 [Source Import 验收](docs/source-import.md)。历史记录保留在 [声音与战役演出验收](docs/audio-cinematic-verification.md)、[v2.0 用户路线验收](docs/dogfood-delivery.md) 和 [安全加固验收](docs/security-hardening-verification.md)。当前公开构建可用 [构建指纹](release-manifest.json) 核对。
 
 ## 使用
 
@@ -35,7 +35,7 @@
 
 ### 背景音乐与场景音效
 
-音乐接口保留文件名 `public/audio/music/theme.mp3`，但该素材没有公开再分发权，**文件及其 Base64 内容均不在仓库中**；原素材仅保留于维护者的本地产品。公开离线 HTML 从无音乐的源码副本重建，不代表含音乐交付包的字节复刻。
+音乐接口保留文件名 `public/audio/music/theme.mp3`。当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。原素材仅保留于维护者的本地产品。公开离线 HTML 从无音乐的源码副本重建，不代表含音乐交付包的字节复刻。
 
 第一次需点击右上角「音关」。菜单 ☰ →「声音设置」可分别开关背景音乐／场景音效、调节音量、试听马蹄与交战声。音乐循环播放，在行军与交战时适度降低音量；离开页面到后台时暂停。音乐和音效均不使用麦克风，也不上传文件。
 

@@ -2,7 +2,7 @@
 
 > 历史记录的公开脱敏副本：真实部署地址、部署标识和本机路径未纳入仓库；截图、音频、浏览器档案及原始日志只在私有工作区保存。下文记录的是当时的验收，不代表首次 Source Import 的重新测试；当前范围见 [Source Import](source-import.md)。
 
-原产品正式版本为 v2.1.1，已补 CSP 与防嵌入保护；实际项目名、地址和部署标识仅保存在本机。新增验收见 [安全加固交付](security-hardening-verification.md)。本次 Source Import 不重新部署，也不分发未获再分发权的音乐。
+原产品正式版本为 v2.1.1，已补 CSP 与防嵌入保护；实际项目名、地址和部署标识仅保存在本机。新增验收见 [安全加固交付](security-hardening-verification.md)。本次 Source Import 不重新部署。当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。
 
 ## 从公开源码构建（当前）
 

@@ -12,7 +12,8 @@ const files = [
   'index.html', '3d/world.css', '3d/world.bundle.js', '3d/THREE-LICENSE.txt',
   'engine.js', 'classic.html', 'app.js', 'style.css', 'audio/config.json'
 ];
-// The public source import excludes music without redistribution rights.
+// Public redistribution rights for the current theme were not verified or authorized for this source import.
+// Therefore the asset and its embedded form are excluded from the public repository.
 // Match build.mjs's missing-audio fallback, but never hide a missing recorded asset.
 for (const file of new Set([config.music.src, ...Object.values(config.effects)].filter(Boolean))) {
   try { await lstat(path.join(publicRoot, file)); }
