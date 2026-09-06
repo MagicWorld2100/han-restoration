@@ -1,0 +1,14 @@
+{
+  "music": {
+    "src": "audio/music/theme.mp3",
+    "title": "山河主题曲",
+    "volume": 0.35
+  },
+  "effects": {
+    "march": "",
+    "battle": "",
+    "departure": "",
+    "victory": "",
+    "retreat": ""
+  }
+}

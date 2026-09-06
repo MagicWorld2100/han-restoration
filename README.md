@@ -2,15 +2,15 @@
 
 一个适合朋友圈接力的中文三维战略沙盘。旋转山河、点选城池、规划粮道与行军，再经营你夺取的地方。正式远略从 207 年成为诸葛亮起步，生产、运输、联盟和制度约束仍然生效。
 
-交付版本 **2.1.0**，新增自选背景音乐、分轨音效与骑步军战役演出。本次范围与验证见 [声音与战役演出验收](docs/audio-cinematic-verification.md)；上一版证据保留在 [v2.0 用户路线验收](docs/dogfood-delivery.md)。部署内容可用 [构建指纹](release-manifest.json) 核对。
+交付版本 **2.1.1**，保留经典二维版与三维版，包含音乐接口、合成音效、战役演出，以及 CSP 和防嵌入加固。本仓库导入已经运行的产品源码，不公开实际部署地址。当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。导入范围与构建差异见 [Source Import 验收](docs/source-import.md)。历史记录保留在 [声音与战役演出验收](docs/audio-cinematic-verification.md)、[v2.0 用户路线验收](docs/dogfood-delivery.md) 和 [安全加固验收](docs/security-hardening-verification.md)。当前公开构建可用 [构建指纹](release-manifest.json) 核对。
 
 ## 使用
 
-公网试玩：首次点右上角「音关」开启音乐。
+本地和公网部署地址只保存在维护者的本机配置，不写入仓库。可在下述两个入口试玩；首次点右上角「音关」开启声音。公开副本不含主题曲，缺失时显示音乐提示，合成音效仍可用。
 
 试玩无需安装依赖。直接打开 `再出隆中-三维版.html`；它包含所有代码与画面生成逻辑，不需要联网加载模型、贴图或字体。需要支持 WebGL 2 的现代浏览器；建议开启硬件加速。`再出隆中.html` 仍是经典文字版。
 
-也可以运行 `python3 -m http.server 8765 --directory public`，访问 `http://localhost:8765`。三维版与经典版分别存档，不会互相覆盖；封面可将经典存档重放到三维版。存档依赖浏览器对当前地址的本地存储许可，切换地址或浏览器不会自动同步。
+也可以在本机设置 `HAN_LAN_HOST` 和 `HAN_LAN_PORT` 后运行 `python3 -m http.server "$HAN_LAN_PORT" --bind "$HAN_LAN_HOST" --directory public`。三维入口是 `public/index.html`，经典入口是 `public/classic.html`。三维版与经典版分别存档，不会互相覆盖；封面可将经典存档重放到三维版。存档依赖浏览器对当前地址的本地存储许可，切换地址或浏览器不会自动同步。
 
 第一次玩建议点击「先试一场北伐」：汉中 → 陇右 → 确认出征 → 军报 → 内治 → 安抚与整合。教学使用明确标记的 228 年预设兵粮，不算正式挑战。正式远略从 207 年、一个荆州据点开始，四次开局军议后进入自由经营。
 
@@ -35,11 +35,11 @@
 
 ### 背景音乐与场景音效
 
-已接入用户放入的 `public/audio/music/theme.mp3`，约 1 分 49 秒。原文件保持不变；局域网版从本站播放，离线 HTML 会内嵌音乐，当前完整文件约 4.12 MB。
+音乐接口保留文件名 `public/audio/music/theme.mp3`。当前主题曲的公开再分发权在本次 Source Import 中未得到验证或授权，因此该音频文件及其 Base64 内嵌形式均不进入公开仓库。原素材仅保留于维护者的本地产品。公开离线 HTML 从无音乐的源码副本重建，不代表含音乐交付包的字节复刻。
 
 第一次需点击右上角「音关」。菜单 ☰ →「声音设置」可分别开关背景音乐／场景音效、调节音量、试听马蹄与交战声。音乐循环播放，在行军与交战时适度降低音量；离开页面到后台时暂停。音乐和音效均不使用麦克风，也不上传文件。
 
-更换音乐时，直接替换 `public/audio/music/theme.mp3`，再刷新游戏。使用其他真实格式或文件名时，修改 [音频配置](public/audio/config.json) 的 `music.src`，路径相对于游戏首页，例如 `audio/music/主题曲.m4a`。保持文件在 `public/audio/` 下；如需更新离线单文件，执行 `npm run build`。构建允许单个音频最大 32 MB。
+个人本地使用可把自己有权使用的音乐放到 `public/audio/music/theme.mp3`，或在声音设置中临时选择本机文件。其他格式必须保留真实扩展名，并调整 [音频配置](public/audio/config.json) 中的相对路径。构建会把存在的音频嵌入离线 HTML（单文件上限 32 MB），因此**即使音频被 .gitignore 排除，含音频的生成 HTML 也不得提交公开仓库**。公开提交前执行 `npm run build:cloudflare` 和 `npm run check:distribution`，确认没有误带本地素材。
 
 默认的马蹄、战鼓、金铁交锋、号声与收兵音效由浏览器本地合成，并非实录。可将自备实录放到 `public/audio/sfx/`，在配置中的 `effects` 设置 `march`、`battle`、`departure`、`victory` 或 `retreat`。未提供或读取失败时使用内置合成。声音设置也可选择本机音频临时试听（不上传、不跨页面保存）。
 
@@ -71,7 +71,7 @@
 
 ## 开发
 
-安装开发依赖后执行 `npm run build`，同时生成 `public/3d/world.bundle.js`、两个离线 HTML、`release-manifest.json` 与可在线读取的 `public/release.json`。运行 `npm test` 检查规则与场景隔离。
+使用 Node.js 22.23.1 或兼容的较新版本。安装开发依赖后执行 `npm run build`，同时生成 `public/3d/world.bundle.js`、两个离线 HTML、`release-manifest.json` 与可在线读取的 `public/release.json`。运行 `npm test` 检查规则、场景、声音演出与安全响应头。项目未定义 lint 或 typecheck。
 
 ```bash
 npm ci
@@ -79,6 +79,12 @@ npm run build
 npm test
 ```
 
-`public/engine.js` 是无浏览器依赖的原始规则引擎；`src/game.mjs` 管理教学、正式场景和存档重放；`src/terrain.js`、`src/cities.js`、`src/world.js` 构建三维世界；`src/main.js` 驱动界面与交互。`public/app.js` / `classic.html` 保留经典版。Three.js 的 MIT 许可附于 `public/3d/THREE-LICENSE.txt`，依赖固定版本并附锁文件。
+`public/engine.js` 是无浏览器依赖的原始规则引擎；`src/game.mjs` 管理教学、正式场景和存档重放；`src/terrain.js`、`src/cities.js`、`src/world.js` 构建三维世界；`src/main.js` 驱动界面与交互。`public/app.js` / `public/classic.html` 保留经典版。Three.js 的 MIT 许可附于 `public/3d/THREE-LICENSE.txt`，依赖固定版本并附锁文件。项目代码保留 Human 的 [Apache-2.0 LICENSE](LICENSE)，不据此授予被排除音乐的权利。
 
-游戏不依赖后端计算、账号、付费 API、排行榜或在线大模型裁判。每个结果由浏览器内的规则计算；相同局号与行动产生相同结果。公网版由独立的 Cloudflare Pages 静态项目提供，不复用 PET 的数据库、服务绑定或域名。
+游戏不依赖后端计算、账号、付费 API、排行榜或在线大模型裁判。每个结果由浏览器内的规则计算；相同局号与行动产生相同结果。部署采用独立的 Cloudflare Pages 静态项目，不复用其他项目的数据库、服务绑定或域名。
+
+### Cloudflare 构建与本机配置
+
+`npm run build:cloudflare` 只构建 `output/cloudflare/site/`，不上传。该目录包含两个网页入口和运行资源；没有音乐文件时打包保留现有回退行为。公开配置不设生产项目名；维护者可将 `wrangler.local.example.jsonc` 复制为被忽略的 `wrangler.local.jsonc`，填写自己的项目名。将 `deploy/local.example.json` 复制为被忽略的 `deploy/local.json`，在本机保存 `productionUrl`、`lanHost` 和 `lanPort`；`verify:cloudflare` 可读取其中的公网验收地址。
+
+发布仍需外部 Cloudflare OAuth 登录和单独授权。`npm run deploy:cloudflare` 是实际发布命令，**首次 Source Import 不执行它**。完整链路及本地配置边界见 [Cloudflare 文档](docs/cloudflare-deployment.md)。

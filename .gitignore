@@ -1,0 +1,33 @@
+output/
+.playwright/
+.playwright-cli/
+node_modules/
+.wrangler/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.log
+cache/
+.cache/
+tmp/
+logs/
+.agents/
+.codex/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.pem
+*.key
+credentials*
+.npmrc
+.netrc
+wrangler.local.jsonc
+deploy/local.json
+# Public redistribution rights for the current theme were not verified or authorized for this source import.
+# Therefore the asset and its embedded form are excluded from the public repository.
+/public/audio/music/theme.mp3
